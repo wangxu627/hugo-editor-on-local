@@ -6,7 +6,6 @@
         <script src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
         <script>
             var articleContent;
-            const el = document.querySelector('textarea');
             const stackedit = new Stackedit();
             stackedit.on('fileChange', function onFileChange(file) {
                 articleContent = file.content.text;
@@ -44,7 +43,6 @@
     </head>
 
     <body>
-        <textarea/>
     </body>
 
 </html>
