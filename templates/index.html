@@ -1,0 +1,51 @@
+{% raw %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script>
+            var articleContent;
+            const el = document.querySelector('textarea');
+            const stackedit = new Stackedit();
+            stackedit.on('fileChange', function onFileChange(file) {
+                articleContent = file.content.text;
+            });
+            stackedit.on('close', function onFileChange(file) {
+                if(!articleContent) {
+                    return;
+                }
+                const articleTitle = window.prompt("Article title:")
+                if(articleTitle && articleContent) {
+                    fetch("/editor-post/", {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            "title": articleTitle,
+                            "content": articleContent
+                        })
+                    })
+                } else {
+                    doOpen();
+                }
+            });
+            setTimeout(doOpen);
+            function doOpen() {
+                stackedit.openFile({
+                    name: 'Markdown with StackEdit',
+                    content: {
+                        text: articleContent || ""
+                    }
+                });
+            }
+        </script>
+    </head>
+
+    <body>
+        <textarea/>
+    </body>
+
+</html>
+{% endraw %}

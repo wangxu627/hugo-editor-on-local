@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Xu | How to ignore invalid and self signed ssl connection errors with curl </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Code more, Word less">
+    
+    <link rel="stylesheet"
+          href="/css/style.min.ec15cff0912041d0dce3a88999b9424990bd24473761645397583776684cdc3b.css"
+          integrity="sha256-7BXP8JEgQdDc46iJmblCSZC9JEc3YWRTl1g3dmhM3Ds="
+          crossorigin="anonymous"
+          type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <link rel="canonical" href="/post/curl-insecure-https/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to ignore invalid and self signed ssl connection errors with curl"/>
+<meta name="twitter:description" content="Wanted to curl command to ignore SSL certification warning. (Does curl command have a &ndash;no-check-certificate option like wget command)[https://www."/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="../images/avatar.jpg" alt="profile picture">
+            <h3 title=""><a href="/">Nothing</a></h3>
+            <div class="description">
+                <p>Code more, Word less</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://github.com/wxioi/" rel="me" aria-label="GitHub">
+                    <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:wangxu627@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fa fa-2x fa-envelope" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Xu 2022 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/tools/"
+                        
+                   title="">Tools</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>How to ignore invalid and self signed ssl connection errors with curl</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Tue, Oct 20, 2020</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            <blockquote>
+<p>Wanted to curl command to ignore SSL certification warning. (Does curl command have a &ndash;no-check-certificate option like wget command)[https://www.cyberciti.biz/faq/wget-example-download-from-https-web-sites/] on Linux or Unix-like system?<br>
+<a href="http://google.com.au/"><img src="https://www.cyberciti.biz/media/new/category/old/terminal.png" alt=""></a></p>
+</blockquote>
+<p>You need to pass the <code>-k</code> or <code>--insecure</code> option to the curl command. This option explicitly allows curl to perform “insecure” SSL connections and transfers. All SSL connections are attempted to be made secure by using the CA certificate bundle installed by default.</p>
+<hr>
+<h1 id="does-curl-have-a-no-check-certificate-option-like-wget-command-on-linux">Does curl have a –no-check-certificate option like wget command on Linux?</h1>
+<p>The syntax is as follows that allows curl command to work with “insecure” or “invalid” SSL certificates without https certicates:</p>
+<pre><code>curl -k url
+curl --insecure url
+curl --insecure [options] url
+curl --insecure -I url
+</code></pre><h2 id="curl-ignore-ssl-certificate-warnings-command">cURL ignore SSL certificate warnings command</h2>
+<p>In this example disable certificate verification for curl command:</p>
+<pre><code>curl --insecure -I https://202.54.1.2/
+</code></pre><p>OR</p>
+<pre><code>curl -k -O https://202.54.1.2/file.tar.gz
+</code></pre><p>Without the <code>-k</code> or <code>--insecure</code> option, you will get an error message that read as follows:</p>
+<pre><code>curl: (60) SSL certificate problem: Invalid certificate chain
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a &quot;bundle&quot;
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+</code></pre><p>Here is one useful example where you want to grab a file or see header info from remote host without using SSL enabled SNI domain name:</p>
+<pre><code>curl -O --insecure --header 'Host: www.example.com' -I https://207.5.1.10/file.html
+### OR ###
+curl -k --header 'Host: www.example.com' -I https://207.5.1.10/file.html
+</code></pre><p>Sample outputs:
+<img src="https://www.cyberciti.biz/media/new/faq/2017/01/curl-ignore-ssl-certificate-warning.jpg" alt=""></p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

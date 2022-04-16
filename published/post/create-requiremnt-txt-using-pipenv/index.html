@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Xu | Create Requiremnt.txt Using Pipenv </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.68.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Code more, Word less">
+    
+    <link rel="stylesheet"
+          href="/css/style.min.ec15cff0912041d0dce3a88999b9424990bd24473761645397583776684cdc3b.css"
+          integrity="sha256-7BXP8JEgQdDc46iJmblCSZC9JEc3YWRTl1g3dmhM3Ds="
+          crossorigin="anonymous"
+          type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+    <link rel="canonical" href="/post/create-requiremnt-txt-using-pipenv/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Create Requiremnt.txt Using Pipenv"/>
+<meta name="twitter:description" content="Instilling pipenv Run the following in your terminal for a user installation:"/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="../images/avatar.jpg" alt="profile picture">
+            <h3 title=""><a href="/">Nothing</a></h3>
+            <div class="description">
+                <p>Code more, Word less</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://github.com/wxioi/" rel="me" aria-label="GitHub">
+                    <i class="fa fa-2x fa-github" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="mailto:wangxu627@gmail.com" rel="me" aria-label="e-mail">
+                    <i class="fa fa-2x fa-envelope" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Xu 2022 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/tools/"
+                        
+                   title="">Tools</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Create Requiremnt.txt Using Pipenv</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Thu, Oct 15, 2020</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            <h1 id="instilling-pipenv">Instilling pipenv</h1>
+<p>Run the following in your terminal for a user installation:</p>
+<pre><code>pip install --upgrade setuptools wheel
+pip install --user pipenv
+</code></pre><p>After installation, open a new terminal and run pipenv</p>
+<pre><code>&gt; pipenv
+Usage: pipenv [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --where             Output project home information.
+  --venv              Output virtualenv information.
+  --py                Output Python interpreter information.
+  --envs              Output Environment Variable options.
+  ...
+</code></pre><p>If you however get &lsquo;pipenv&rsquo; is not recognized as an internal or external command, operable program or batch file, get the Python path to the base directory for the user site-packages by running:</p>
+<pre><code>python -m site --user-site
+</code></pre><p>Replace site-packages in the path with Scripts then add to your system PATH (on Windows: Edit environment variables for your account &gt; in the User variables select Path &gt; Edit &gt; New &gt; <code>C:\Users\drgabrielharris\AppData\Roaming\Python\Python37\Scripts</code> ). For more details check here</p>
+<h1 id="using-pipenv-to-install-packages-">Using pipenv to install packages 📦</h1>
+<p>Navigate to your project directory and run:</p>
+<pre><code>pipenv shell
+</code></pre><p>This does few things for you:</p>
+<ul>
+<li>
+<p>Creates a virtualenv for this project using the activated/registered Python interpreter in the current terminal. The virtualenv is created in the folder C:\Users&lt;username&gt;.virtualenvs and is given a name automatically</p>
+</li>
+<li>
+<p>Creates a Pipfile in the project’s directory. The Pipfile is used to track which dependencies your project needs in case you need to re-install them</p>
+</li>
+<li>
+<p>Launches a subshell in the project’s directory (i.e. activating the virtualenv)</p>
+</li>
+</ul>
+<p>Now you can install all the required packages as you would usually do using pip but using pipenv instead, for example:</p>
+<pre><code>pipenv install pandas
+</code></pre><p>Once you have finished, run your script to check that you’ve indeed installed everything that is required:</p>
+<pre><code>pipenv run python script.py
+</code></pre><h1 id="creating-requirementstxt-">Creating requirements.txt 📃</h1>
+<p>This’s what you’ve been waiting for!</p>
+<pre><code>pipenv lock -r &gt; requirements.txt
+</code></pre><p>This creates a <code>Pipfile.lock</code> file (or updates an existing one) in the project’s directory, and of course your <code>requirements.txt</code> file with the required dependencies:</p>
+<pre><code>-i https://pypi.org/simple
+numpy==1.18.1
+pandas==1.0.1
+python-dateutil==2.8.1
+pytz==2019.3
+six==1.14.0
+</code></pre><h2 id="useful-to-know">Useful to know</h2>
+<p>To uninstall a package</p>
+<pre><code>pipenv uninstall &lt;package-name&gt;
+</code></pre><p>To remove the virtual environment</p>
+<pre><code>pipenv --rm
+</code></pre><p>To see dependencies</p>
+<pre><code>pipenv graph
+</code></pre><h1 id="what-is-next-">What is next? 👊</h1>
+<p>Learn how to use your <code>requirements.txt</code> to build a Docker image <a href="https://medium.com/swlh/python-how-starting-with-docker-d2be73d9ae92">👉</a></p>
+<p>Happy coding!</p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
